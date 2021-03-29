@@ -40,4 +40,4 @@ Follow the below instructions to clone this project
 
 ## Note
 
-** The requirements.txt file has been elimated of all sensitive information, the steps to update it for your cloned project will be added shortly **
+**The requirements.txt file has been elimated of all sensitive information, the steps to update it for your cloned project will be added shortly**
