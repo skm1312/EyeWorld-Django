@@ -1,0 +1,22 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+	<blockquote class="blockquote text-center" style="text-align: center; padding-top: 100">
+		<h1><p class="mb-0">Upload your face</p></h1>
+			<br>	
+				<form method = "post" enctype="multipart/form-data"> 
+        			{% csrf_token %} 
+        			{{ form.as_p }} 
+        			<br>
+        			<button type="submit" href="{% url 'face_image' }">Upload</button> 
+    			</form>
+    		</blockquote>
+
+    <br>
+    <blockquote class="blockquote text-center">
+        <p class="mb-0">** That's it! **</p>
+        <footer class="blockquote-footer"> You've scrolled to the end of the List!</footer>
+    </blockquote>
+
+    {% endblock content %} 

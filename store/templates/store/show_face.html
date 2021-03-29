@@ -1,0 +1,20 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<h1 style="text-align: center;">Face_shape</h1>
+    <div class="row">
+	<!--{% for face in show_face %}-->
+
+            <div class="col-md-4"> 
+                    {{ face.name }} 
+                     <img src="{{ face.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
+            </div> 
+    <!--{% endfor %}-->
+</div>
+   <br>
+    <blockquote class="blockquote text-center">
+        <p class="mb-0">** That's it! **</p>
+        <footer class="blockquote-footer"> You've scrolled to the end of the List!</footer>
+    </blockquote>
+
+    {% endblock content %} 

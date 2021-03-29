@@ -1,0 +1,60 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<h1 style="text-align: center;">{{context.product_category.name}}</h1>
+<h5 style="text-align: center;">{{text}}</h5>
+<div class="row">
+	{% for product in context.products %}
+	<div class="col-lg-4">
+		<img class="thumbnail" src="{{ product.get_imageURL }}">
+		<div class="box-element product">
+			<h6><strong>{{product.name}}</strong></h6>
+			<p><strong>Description: </strong>{{product.description}}</p>
+			<hr>
+			{% if context.product_category.name == "Frames" %}
+				<button data-toggle="collapse" href="#addtocartform{{product.id}}" aria-expanded="false"
+					aria-controls="addtocartform{{product.id}}" class="btn btn-outline-secondary add-btn"
+					product_id="{{product.id}}">Add to Cart</button>
+			{% else %}
+				<button class="update_cart btn btn-outline-secondary add-btn" product_id="{{product.id}}">Add to Cart</button>
+
+			{% endif %}
+
+			<h4 style="display: inline-block; float: right"><strong>&#36;{{product.price}}</strong></h4>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="collapse multi-collapse" id="addtocartform{{product.id}}">
+				<div class="card card-body" style="margin: 10px;">
+					<p><b>Step 1: </b>Frame name: <b>{{product.name}}</b></p>
+				</div>
+				<form method="POST" id="post_form" enctype="multipart/form-data">
+					<p><b>Step 2: </b>Frame prescription: </p>
+                                <!-- Very Important csrf Token -->
+                                {% csrf_token %}
+                                    <div class = "form-group">
+                                        <p>
+                                            <h3>{{ form.as_p }}</h3>
+                                        </p>
+                                        <br>
+                                        <button class="btn btn-outline-secondary add-btn">Upload Prescription</button>
+                                        <button class="update_cart btn btn-outline-secondary add-btn" product_id="{{product.id}}" product_category_id="{{context.product_category.id}}">Add to Cart</button>
+                                    </div>
+                                </form>
+
+				
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+<br><br>
+<blockquote class="blockquote text-center">
+	<p class="mb-0">** That's it! **</p>
+	<footer class="blockquote-footer"> You've scrolled to the end of the List!</footer>
+</blockquote>
+
+{% endblock content %}
